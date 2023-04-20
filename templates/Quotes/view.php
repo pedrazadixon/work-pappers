@@ -20,11 +20,11 @@
             <table>
                 <tr>
                     <th><?= __('Client') ?></th>
-                    <td><?= $quote->has('client') ? $this->Html->link($quote->client->id, ['controller' => 'Clients', 'action' => 'view', $quote->client->id]) : '' ?></td>
+                    <td><?= $quote->has('client') ? $this->Html->link($quote->client->company_name, ['controller' => 'Clients', 'action' => 'view', $quote->client->id]) : '' ?></td>
                 </tr>
                 <tr>
                     <th><?= __('Supplier') ?></th>
-                    <td><?= $quote->has('supplier') ? $this->Html->link($quote->supplier->title, ['controller' => 'Suppliers', 'action' => 'view', $quote->supplier->id]) : '' ?></td>
+                    <td><?= $quote->has('supplier') ? $this->Html->link($quote->supplier->company_name, ['controller' => 'Suppliers', 'action' => 'view', $quote->supplier->id]) : '' ?></td>
                 </tr>
                 <tr>
                     <th><?= __('Title') ?></th>

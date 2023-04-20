@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace App\Model\Entity;
@@ -44,4 +45,9 @@ class Client extends Entity
         'identification_type' => true,
         'quotes' => true,
     ];
+
+    protected function _getFullName()
+    {
+        return $this->first_name . ' ' . $this->last_name;
+    }
 }

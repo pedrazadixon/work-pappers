@@ -26,8 +26,8 @@
                 <tr>
                     <td><?= $this->Number->format($bill->id) ?></td>
                     <td><?= $bill->has('quote') ? $this->Html->link($bill->quote->title, ['controller' => 'Quotes', 'action' => 'view', $bill->quote->id]) : '' ?></td>
-                    <td><?= $bill->has('supplier') ? $this->Html->link($bill->supplier->title, ['controller' => 'Suppliers', 'action' => 'view', $bill->supplier->id]) : '' ?></td>
-                    <td><?= $bill->has('bank_account') ? $this->Html->link($bill->bank_account->id, ['controller' => 'BankAccounts', 'action' => 'view', $bill->bank_account->id]) : '' ?></td>
+                    <td><?= $bill->has('supplier') ? $this->Html->link($bill->supplier->company_name, ['controller' => 'Suppliers', 'action' => 'view', $bill->supplier->id]) : '' ?></td>
+                    <td><?= $bill->has('bank_account') ? $this->Html->link($bill->bank_account->full_name, ['controller' => 'BankAccounts', 'action' => 'view', $bill->bank_account->id]) : '' ?></td>
                     <td><?= $bill->has('bills_status') ? $this->Html->link($bill->bills_status->name, ['controller' => 'BillsStatuses', 'action' => 'view', $bill->bills_status->id]) : '' ?></td>
                     <td><?= h($bill->date) ?></td>
                     <td><?= h($bill->created) ?></td>

@@ -59,7 +59,9 @@ class PaymentsController extends AppController
             }
             $this->Flash->error(__('The payment could not be saved. Please, try again.'));
         }
-        $bills = $this->Payments->Bills->find('list', ['limit' => 200])->all();
+        $bills = $this->Payments->Bills
+            ->find('all', ['limit' => 200, 'contain' => ['Quotes'],])
+            ->combine('id', 'quote.title');
         $paymentStatuses = $this->Payments->PaymentStatuses->find('list', ['limit' => 200])->all();
         $this->set(compact('payment', 'bills', 'paymentStatuses'));
     }

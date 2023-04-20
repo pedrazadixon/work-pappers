@@ -44,7 +44,7 @@ class SuppliersTable extends Table
         parent::initialize($config);
 
         $this->setTable('suppliers');
-        $this->setDisplayField('title');
+        $this->setDisplayField('company_name');
         $this->setPrimaryKey('id');
 
         $this->addBehavior('Timestamp');

@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace App\Model\Table;
@@ -43,7 +44,7 @@ class ClientsTable extends Table
         parent::initialize($config);
 
         $this->setTable('clients');
-        $this->setDisplayField('id');
+        $this->setDisplayField('company_name');
         $this->setPrimaryKey('id');
 
         $this->addBehavior('Timestamp');

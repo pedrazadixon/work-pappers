@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace App\Model\Entity;
@@ -44,4 +45,9 @@ class BankAccount extends Entity
         'identification_type' => true,
         'bills' => true,
     ];
+
+    protected function _getFullName()
+    {
+        return $this->bank_name . ' ' . $this->account_number . ' (' . $this->holder_name . ')';
+    }
 }

@@ -24,8 +24,8 @@
                 <?php foreach ($quotes as $quote): ?>
                 <tr>
                     <td><?= $this->Number->format($quote->id) ?></td>
-                    <td><?= $quote->has('client') ? $this->Html->link($quote->client->id, ['controller' => 'Clients', 'action' => 'view', $quote->client->id]) : '' ?></td>
-                    <td><?= $quote->has('supplier') ? $this->Html->link($quote->supplier->title, ['controller' => 'Suppliers', 'action' => 'view', $quote->supplier->id]) : '' ?></td>
+                    <td><?= $quote->has('client') ? $this->Html->link($quote->client->company_name, ['controller' => 'Clients', 'action' => 'view', $quote->client->id]) : '' ?></td>
+                    <td><?= $quote->has('supplier') ? $this->Html->link($quote->supplier->company_name, ['controller' => 'Suppliers', 'action' => 'view', $quote->supplier->id]) : '' ?></td>
                     <td><?= h($quote->title) ?></td>
                     <td><?= $quote->has('quotes_status') ? $this->Html->link($quote->quotes_status->name, ['controller' => 'QuotesStatuses', 'action' => 'view', $quote->quotes_status->id]) : '' ?></td>
                     <td><?= h($quote->created) ?></td>
