@@ -24,7 +24,9 @@
     <!-- CSS Files -->
     <?= $this->Html->css(['/theme/css/material-dashboard.min']) ?>
     <link href="//fonts.googleapis.com/icon?family=Material+Icons+Round" rel="stylesheet">
-
+    
+    <!-- CSS additional -->
+    <?= $this->Html->css(['additional']) ?>
 </head>
 
 <?php

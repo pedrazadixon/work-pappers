@@ -1,0 +1,9 @@
+.form-control {
+    padding-top: 0px;
+}
+
+select.form-control {
+    -webkit-appearance: auto;
+    appearance: auto;
+    padding-top: 5px;
+}
