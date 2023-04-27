@@ -44,9 +44,24 @@
                                     <td><?= h($bankAccount->holder_identication_number) ?></td>
                                     <td><?= h($bankAccount->created) ?></td>
                                     <td class="actions">
-                                        <?= $this->Html->link(__('View'), ['action' => 'view', $bankAccount->id]) ?>
-                                        <?= $this->Html->link(__('Edit'), ['action' => 'edit', $bankAccount->id]) ?>
-                                        <?= $this->Form->postLink(__('Delete'), ['action' => 'delete', $bankAccount->id], ['confirm' => __('Are you sure you want to delete # {0}?', $bankAccount->id)]) ?>
+                                        <a class="btn btn-sm btn-action btn-icon btn-2 btn-info" href="<?= $this->Url->build(['action' => 'view', $bankAccount->id]) ?>" data-bs-toggle="tooltip" data-bs-placement="top" title="view">
+                                            <span class="btn-inner--icon"><i class="material-icons">description</i></span>
+                                        </a>
+                                        <a class="btn btn-sm btn-action btn-icon btn-2 btn-warning" href="<?= $this->Url->build(['action' => 'edit', $bankAccount->id]) ?>" data-bs-toggle="tooltip" data-bs-placement="top" title="edit">
+                                            <span class="btn-inner--icon"><i class="material-icons">edit</i></span>
+                                        </a>
+                                        <?= $this->Form->postLink(
+                                            '<span class="btn-inner--icon"><i class="material-icons">delete</i></span>',
+                                            ['action' => 'delete', $bankAccount->id],
+                                            [
+                                                'confirm' => __('Are you sure you want to delete # {0}?', $bankAccount->id),
+                                                'escape' => false,
+                                                'class' => 'btn btn-sm btn-action btn-icon btn-2 btn-danger',
+                                                'data-bs-toggle' => 'tooltip',
+                                                'data-bs-placement' => 'top',
+                                                'title' => 'delete',
+                                            ]
+                                        ) ?>
                                     </td>
                                 </tr>
                             <?php endforeach; ?>

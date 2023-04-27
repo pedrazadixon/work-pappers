@@ -7,3 +7,14 @@ select.form-control {
     appearance: auto;
     padding-top: 5px;
 }
+
+.btn-action>span>i {
+    font-size: 1rem !important;
+    padding-right: 0px !important;
+}
+
+.btn-action {
+    padding-right: 7px !important;
+    padding-left: 7px !important;
+    margin-bottom: 0px;
+}

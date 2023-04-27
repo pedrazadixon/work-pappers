@@ -34,9 +34,24 @@
                                     <td><?= h($identificationType->name) ?></td>
                                     <td><?= h($identificationType->acronym) ?></td>
                                     <td class="actions">
-                                        <?= $this->Html->link(__('View'), ['action' => 'view', $identificationType->id]) ?>
-                                        <?= $this->Html->link(__('Edit'), ['action' => 'edit', $identificationType->id]) ?>
-                                        <?= $this->Form->postLink(__('Delete'), ['action' => 'delete', $identificationType->id], ['confirm' => __('Are you sure you want to delete # {0}?', $identificationType->id)]) ?>
+                                        <a class="btn btn-sm btn-action btn-icon btn-2 btn-info" href="<?= $this->Url->build(['action' => 'view', $identificationType->id]) ?>" data-bs-toggle="tooltip" data-bs-placement="top" title="view">
+                                            <span class="btn-inner--icon"><i class="material-icons">description</i></span>
+                                        </a>
+                                        <a class="btn btn-sm btn-action btn-icon btn-2 btn-warning" href="<?= $this->Url->build(['action' => 'edit', $identificationType->id]) ?>" data-bs-toggle="tooltip" data-bs-placement="top" title="edit">
+                                            <span class="btn-inner--icon"><i class="material-icons">edit</i></span>
+                                        </a>
+                                        <?= $this->Form->postLink(
+                                            '<span class="btn-inner--icon"><i class="material-icons">delete</i></span>',
+                                            ['action' => 'delete', $identificationType->id],
+                                            [
+                                                'confirm' => __('Are you sure you want to delete # {0}?', $identificationType->id),
+                                                'escape' => false,
+                                                'class' => 'btn btn-sm btn-action btn-icon btn-2 btn-danger',
+                                                'data-bs-toggle' => 'tooltip',
+                                                'data-bs-placement' => 'top',
+                                                'title' => 'delete',
+                                            ]
+                                        ) ?>
                                     </td>
                                 </tr>
                             <?php endforeach; ?>
