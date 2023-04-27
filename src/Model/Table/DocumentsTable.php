@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace App\Model\Table;
@@ -62,17 +63,15 @@ class DocumentsTable extends Table
     {
         $validator
             ->integer('quote_id')
-            ->allowEmptyString('quote_id');
+            ->notEmptyString('quote_id');
 
         $validator
-            ->scalar('name')
             ->maxLength('name', 255)
-            ->allowEmptyString('name');
+            ->notEmptyString('name');
 
         $validator
-            ->scalar('path')
             ->maxLength('path', 255)
-            ->allowEmptyString('path');
+            ->notEmptyString('path');
 
         return $validator;
     }

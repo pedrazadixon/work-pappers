@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace App\Model\Table;
@@ -86,20 +87,20 @@ class QuotesTable extends Table
     {
         $validator
             ->integer('client_id')
-            ->allowEmptyString('client_id');
+            ->notEmptyString('client_id');
 
         $validator
             ->integer('supplier_id')
-            ->allowEmptyString('supplier_id');
+            ->notEmptyString('supplier_id');
 
         $validator
             ->scalar('title')
             ->maxLength('title', 255)
-            ->allowEmptyString('title');
+            ->notEmptyString('title');
 
         $validator
             ->integer('status_id')
-            ->allowEmptyString('status_id');
+            ->notEmptyString('status_id');
 
         $validator
             ->scalar('comment')

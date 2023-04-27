@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace App\Model\Table;
@@ -62,20 +63,19 @@ class QuotesItemsTable extends Table
     {
         $validator
             ->integer('quote_id')
-            ->allowEmptyString('quote_id');
+            ->notEmptyString('quote_id');
 
         $validator
-            ->scalar('description')
             ->maxLength('description', 16777215)
-            ->allowEmptyString('description');
+            ->notEmptyString('description');
 
         $validator
             ->integer('hours')
-            ->allowEmptyString('hours');
+            ->notEmptyString('hours');
 
         $validator
             ->decimal('hour_price')
-            ->allowEmptyString('hour_price');
+            ->notEmptyString('hour_price');
 
         return $validator;
     }

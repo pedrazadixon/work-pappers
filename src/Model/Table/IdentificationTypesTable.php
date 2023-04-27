@@ -61,14 +61,12 @@ class IdentificationTypesTable extends Table
     public function validationDefault(Validator $validator): Validator
     {
         $validator
-            ->scalar('name')
             ->maxLength('name', 100)
-            ->allowEmptyString('name');
+            ->notEmptyString('name');
 
         $validator
-            ->scalar('acronym')
             ->maxLength('acronym', 25)
-            ->allowEmptyString('acronym');
+            ->notEmptyString('acronym');
 
         return $validator;
     }

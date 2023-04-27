@@ -66,37 +66,32 @@ class ClientsTable extends Table
     public function validationDefault(Validator $validator): Validator
     {
         $validator
-            ->scalar('first_name')
             ->maxLength('first_name', 255)
-            ->allowEmptyString('first_name');
+            ->notEmptyString('first_name');
 
         $validator
-            ->scalar('last_name')
             ->maxLength('last_name', 255)
-            ->allowEmptyString('last_name');
+            ->notEmptyString('last_name');
 
         $validator
-            ->scalar('company_name')
             ->maxLength('company_name', 255)
-            ->allowEmptyString('company_name');
+            ->notEmptyString('company_name');
 
         $validator
             ->integer('identification_type_id')
-            ->allowEmptyString('identification_type_id');
+            ->notEmptyString('identification_type_id');
 
         $validator
-            ->scalar('identification_number')
             ->maxLength('identification_number', 100)
-            ->allowEmptyString('identification_number');
+            ->notEmptyString('identification_number');
 
         $validator
-            ->scalar('phone')
             ->maxLength('phone', 100)
-            ->allowEmptyString('phone');
+            ->notEmptyString('phone');
 
         $validator
             ->email('email')
-            ->allowEmptyString('email');
+            ->notEmptyString('email');
 
         return $validator;
     }

@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace App\Model\Table;
@@ -69,32 +70,28 @@ class BankAccountsTable extends Table
     public function validationDefault(Validator $validator): Validator
     {
         $validator
-            ->scalar('bank_name')
             ->maxLength('bank_name', 255)
-            ->allowEmptyString('bank_name');
+            ->notEmptyString('bank_name');
 
         $validator
             ->integer('account_type_id')
-            ->allowEmptyString('account_type_id');
+            ->notEmptyString('account_type_id');
 
         $validator
-            ->scalar('account_number')
             ->maxLength('account_number', 100)
-            ->allowEmptyString('account_number');
+            ->notEmptyString('account_number');
 
         $validator
-            ->scalar('holder_name')
             ->maxLength('holder_name', 255)
-            ->allowEmptyString('holder_name');
+            ->notEmptyString('holder_name');
 
         $validator
             ->integer('holder_identification_type_id')
-            ->allowEmptyString('holder_identification_type_id');
+            ->notEmptyString('holder_identification_type_id');
 
         $validator
-            ->scalar('holder_identication_number')
             ->maxLength('holder_identication_number', 100)
-            ->allowEmptyString('holder_identication_number');
+            ->notEmptyString('holder_identication_number');
 
         return $validator;
     }

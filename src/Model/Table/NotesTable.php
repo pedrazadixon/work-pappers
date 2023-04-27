@@ -65,9 +65,8 @@ class NotesTable extends Table
             ->allowEmptyString('quote_id');
 
         $validator
-            ->scalar('note')
             ->maxLength('note', 16777215)
-            ->allowEmptyString('note');
+            ->notEmptyString('note');
 
         return $validator;
     }

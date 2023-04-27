@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace App\Model\Table;
@@ -66,14 +67,13 @@ class PaymentsTable extends Table
     {
         $validator
             ->integer('bill_id')
-            ->allowEmptyString('bill_id');
+            ->notEmptyString('bill_id');
 
         $validator
             ->integer('status_id')
-            ->allowEmptyString('status_id');
+            ->notEmptyString('status_id');
 
         $validator
-            ->scalar('comment')
             ->maxLength('comment', 16777215)
             ->allowEmptyString('comment');
 

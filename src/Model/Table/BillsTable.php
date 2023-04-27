@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace App\Model\Table;
@@ -78,23 +79,23 @@ class BillsTable extends Table
     {
         $validator
             ->integer('quote_id')
-            ->allowEmptyString('quote_id');
+            ->notEmptyString('quote_id');
 
         $validator
             ->integer('supplier_id')
-            ->allowEmptyString('supplier_id');
+            ->notEmptyString('supplier_id');
 
         $validator
             ->integer('bank_account_id')
-            ->allowEmptyString('bank_account_id');
+            ->notEmptyString('bank_account_id');
 
         $validator
             ->integer('status_id')
-            ->allowEmptyString('status_id');
+            ->notEmptyString('status_id');
 
         $validator
             ->date('date')
-            ->allowEmptyDate('date');
+            ->notEmptyDate('date');
 
         return $validator;
     }

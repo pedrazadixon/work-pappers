@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace App\Model\Table;
@@ -51,9 +52,8 @@ class QuotesStatusesTable extends Table
     public function validationDefault(Validator $validator): Validator
     {
         $validator
-            ->scalar('name')
             ->maxLength('name', 100)
-            ->allowEmptyString('name');
+            ->notEmptyString('name');
 
         return $validator;
     }

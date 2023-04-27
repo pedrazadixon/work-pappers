@@ -51,9 +51,8 @@ class BankAccountTypesTable extends Table
     public function validationDefault(Validator $validator): Validator
     {
         $validator
-            ->scalar('name')
             ->maxLength('name', 100)
-            ->allowEmptyString('name');
+            ->notEmptyString('name');
 
         return $validator;
     }
