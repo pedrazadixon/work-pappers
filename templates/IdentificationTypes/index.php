@@ -34,10 +34,10 @@
                                     <td><?= h($identificationType->name) ?></td>
                                     <td><?= h($identificationType->acronym) ?></td>
                                     <td class="actions">
-                                        <a class="btn btn-sm btn-action btn-icon btn-2 btn-info" href="<?= $this->Url->build(['action' => 'view', $identificationType->id]) ?>" data-bs-toggle="tooltip" data-bs-placement="top" title="view">
+                                        <a class="btn btn-sm btn-action btn-icon btn-secondary shadow" href="<?= $this->Url->build(['action' => 'view', $identificationType->id]) ?>" data-bs-toggle="tooltip" data-bs-placement="top" title="view">
                                             <span class="btn-inner--icon"><i class="material-icons">description</i></span>
                                         </a>
-                                        <a class="btn btn-sm btn-action btn-icon btn-2 btn-warning" href="<?= $this->Url->build(['action' => 'edit', $identificationType->id]) ?>" data-bs-toggle="tooltip" data-bs-placement="top" title="edit">
+                                        <a class="btn btn-sm btn-action btn-icon btn-secondary shadow" href="<?= $this->Url->build(['action' => 'edit', $identificationType->id]) ?>" data-bs-toggle="tooltip" data-bs-placement="top" title="edit">
                                             <span class="btn-inner--icon"><i class="material-icons">edit</i></span>
                                         </a>
                                         <?= $this->Form->postLink(
@@ -46,7 +46,7 @@
                                             [
                                                 'confirm' => __('Are you sure you want to delete # {0}?', $identificationType->id),
                                                 'escape' => false,
-                                                'class' => 'btn btn-sm btn-action btn-icon btn-2 btn-danger',
+                                                'class' => 'btn btn-sm btn-action btn-icon btn-secondary shadow',
                                                 'data-bs-toggle' => 'tooltip',
                                                 'data-bs-placement' => 'top',
                                                 'title' => 'delete',
