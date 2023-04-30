@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace App\Controller;
@@ -47,20 +48,52 @@ class QuotesItemsController extends AppController
      *
      * @return \Cake\Http\Response|null|void Redirects on successful add, renders view otherwise.
      */
-    public function add()
+    public function manage($quote_id)
     {
-        $quotesItem = $this->QuotesItems->newEmptyEntity();
-        if ($this->request->is('post')) {
-            $quotesItem = $this->QuotesItems->patchEntity($quotesItem, $this->request->getData());
-            if ($this->QuotesItems->save($quotesItem)) {
-                $this->Flash->success(__('The quotes item has been saved.'));
+        $quote = $this->QuotesItems->Quotes->get($quote_id);
 
-                return $this->redirect(['action' => 'index']);
+        $quote_items = $this->QuotesItems->find()
+            ->select(['id', 'description', 'hours', 'hour_price'])
+            ->where(['quote_id' => $quote->id])
+            ->enableHydration(false)
+            ->toArray();
+
+
+        if ($this->request->is('post')) {
+
+            $request_data = $this->request->getData();
+
+            foreach ($request_data as $item) {
+
+                // new item
+                if (is_null($item['id'])) {
+                    $item_entity = $this->QuotesItems->newEntity($item);
+                    $item_entity->quote_id = $quote->id;
+                    $this->QuotesItems->save($item_entity);
+                    continue;
+                }
+
+                // edit item
+                if (in_array($item['id'], array_column($quote_items, 'id'))) {
+                    $item_entity = $this->QuotesItems->get($item['id']);
+                    $item_entity = $this->QuotesItems->patchEntity($item_entity, $item);
+                    $this->QuotesItems->save($item_entity);
+                }
             }
-            $this->Flash->error(__('The quotes item could not be saved. Please, try again.'));
+
+            // delete items
+            foreach ($quote_items as $item) {
+                if (!in_array($item['id'], array_column($request_data, 'id'))) {
+                    $item_entity = $this->QuotesItems->get($item['id']);
+                    $this->QuotesItems->delete($item_entity);
+                }
+            }
+
+            $this->Flash->success(__('The quotes item has been saved.'));
+            return $this->response->withType('application/json')
+                ->withStringBody(json_encode([]));
         }
-        $quotes = $this->QuotesItems->Quotes->find('list', ['limit' => 200])->all();
-        $this->set(compact('quotesItem', 'quotes'));
+        $this->set(compact('quote', 'quote_items'));
     }
 
     /**

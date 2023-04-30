@@ -55,7 +55,7 @@
                                         <a class="btn btn-sm btn-action btn-icon btn-secondary shadow" href="<?= $this->Url->build(['action' => 'view', $quote->id]) ?>" data-bs-toggle="tooltip" data-bs-placement="top" title="view">
                                             <span class="btn-inner--icon"><i class="material-icons">description</i></span>
                                         </a>
-                                        <a class="btn btn-sm btn-action btn-icon btn-secondary shadow" href="<?= $this->Url->build(['action' => 'view', $quote->id]) ?>" data-bs-toggle="tooltip" data-bs-placement="top" title="items">
+                                        <a class="btn btn-sm btn-action btn-icon btn-secondary shadow" href="<?= $this->Url->build(['controller' => 'QuotesItems', 'action' => 'manage', $quote->id]) ?>" data-bs-toggle="tooltip" data-bs-placement="top" title="items">
                                             <span class="btn-inner--icon"><i class="material-icons">view_list</i></span>
                                         </a>
                                         <a class="btn btn-sm btn-action btn-icon btn-secondary shadow" href="<?= $this->Url->build(['action' => 'edit', $quote->id]) ?>" data-bs-toggle="tooltip" data-bs-placement="top" title="edit">
