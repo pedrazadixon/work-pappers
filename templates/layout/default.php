@@ -24,7 +24,7 @@
     <!-- CSS Files -->
     <?= $this->Html->css(['/theme/css/material-dashboard.min']) ?>
     <link href="//fonts.googleapis.com/icon?family=Material+Icons+Round" rel="stylesheet">
-    
+
     <!-- CSS additional -->
     <?= $this->Html->css(['additional']) ?>
 </head>
@@ -163,6 +163,9 @@ $a = $this->getRequest()->getParam('action');
 
     <!-- Control Center for Material Dashboard: parallax effects, scripts for the example pages etc -->
     <?= $this->Html->script('/theme/js/material-dashboard.min') ?>
+
+    <?= $this->fetch('end_scripts') ?>
+
 </body>
 
 </html>
