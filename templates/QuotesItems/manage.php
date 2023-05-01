@@ -65,8 +65,8 @@
                     </div>
 
                     <div class="row">
-                        <div class="col-12">
-                            <button type="button" class="btn btn-info" @click="addItem">Agregar item</button>
+                        <div class="col-12 text-end">
+                            <button type="button" class="btn btn-info me-5" @click="addItem">Agregar item</button>
                         </div>
                     </div>
 
@@ -146,10 +146,12 @@
                     hours: '',
                     hour_price: '',
                 })
+                this.updateTotals()
             },
             deleteItem(index) {
                 if (this.items.length > 1)
                     this.items.splice(index, 1);
+                this.updateTotals()
             },
             checkForm(e) {
                 e.preventDefault();
