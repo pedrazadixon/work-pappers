@@ -1,7 +1,10 @@
 <?php
+
 declare(strict_types=1);
 
 namespace App\Controller;
+
+use Cake\Utility\Text;
 
 /**
  * Quotes Controller
@@ -110,5 +113,68 @@ class QuotesController extends AppController
         }
 
         return $this->redirect(['action' => 'index']);
+    }
+
+    public function makeWord($id)
+    {
+
+        $quote = $this->Quotes->get($id, [
+            'contain' => ['QuotesItems', 'Clients.IdentificationTypes', 'Suppliers.IdentificationTypes']
+        ]);
+
+        // $fmt = new \IntlDateFormatter('es-ES', 0, 0, null, null, 'MMMM');
+        // dd($fmt->format($quote->created));
+
+        $fmt = new \NumberFormatter('es_CO', \NumberFormatter::CURRENCY);
+        $fmt->setAttribute($fmt::FRACTION_DIGITS, 0);
+
+        $quote_items = array_map(function ($item) use ($fmt) {
+            $new_item['item_description'] = $item->description;
+            $new_item['item_hours'] = $item->hours;
+            $new_item['item_hour_price'] =  $fmt->formatCurrency((float) $item->hour_price, 'COP');
+            $new_item['item_total'] = $fmt->formatCurrency((float) $item->hours * $item->hour_price, 'COP');
+            return $new_item;
+        }, $quote->quotes_items);
+
+
+        $template_file = ROOT . DS . 'files' . DS . 'templates' . DS . 'quote.docx';
+
+        $templateProcessor = new \PhpOffice\PhpWord\TemplateProcessor($template_file);
+
+        $templateProcessor->setValue('q-id', $quote->id);
+        $templateProcessor->setValue('q-title', $quote->title);
+        $templateProcessor->setValue('c-c-n', $quote->client->company_name);
+        $templateProcessor->setValue('c-i-n', $quote->client->identification_number);
+        $templateProcessor->setValue('q-date', $quote->created->format('Y-m-d'));
+        $templateProcessor->setValue('c-email', $quote->client->email);
+        $templateProcessor->setValue('c-phone', $quote->client->phone);
+        $templateProcessor->setValue('q-comment', str_replace("\n", "<w:br/>", $quote->comment));
+        $templateProcessor->setValue('s-c-n', mb_strtoupper($quote->supplier->company_name));
+        $templateProcessor->setValue('s-i-n', $quote->supplier->identification_number);
+        $templateProcessor->setValue('s-title', $quote->supplier->title);
+        $templateProcessor->setValue('s-phone', $quote->supplier->phone);
+        $templateProcessor->setValue('s-email', $quote->supplier->email);
+        $templateProcessor->setValue('c-i-t', $quote->client->identification_type->acronym);
+        $templateProcessor->setValue('s-i-t', $quote->supplier->identification_type->acronym);
+
+        $templateProcessor->cloneRowAndSetValues('item_description', $quote_items);
+
+        $dest_filename = 'Quote_' . $quote->id . '_' . Text::slug($quote->client->company_name . '.docx');
+
+        $templateProcessor->saveAs(TMP . $dest_filename);
+
+        header('Content-Description: File Transfer');
+        header('Content-Type: application/octet-stream');
+        header(sprintf('Content-Disposition: attachment; filename="%s.docx"', $dest_filename));
+        header('Expires: 0');
+        header('Cache-Control: must-revalidate');
+        header('Pragma: public');
+        header('Content-Length: ' . filesize(TMP . $dest_filename));
+
+        readfile(TMP . $dest_filename);
+
+        unlink(TMP . $dest_filename);
+
+        exit();
     }
 }

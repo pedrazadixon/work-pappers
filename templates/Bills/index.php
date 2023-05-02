@@ -62,6 +62,9 @@
                                         <a class="btn btn-sm btn-action btn-icon btn-secondary shadow" href="<?= $this->Url->build(['action' => 'edit', $bill->id]) ?>" data-bs-toggle="tooltip" data-bs-placement="top" title="edit">
                                             <span class="btn-inner--icon"><i class="material-icons">edit</i></span>
                                         </a>
+                                        <a class="btn btn-sm btn-action btn-icon btn-secondary shadow" href="<?= $this->Url->build(['action' => 'makeWord', $bill->id]) ?>" data-bs-toggle="tooltip" data-bs-placement="top" title="download">
+                                            <span class="btn-inner--icon"><i class="material-icons">file_present</i></span>
+                                        </a>
                                         <?= $this->Form->postLink(
                                             '<span class="btn-inner--icon"><i class="material-icons">delete</i></span>',
                                             ['action' => 'delete', $bill->id],
