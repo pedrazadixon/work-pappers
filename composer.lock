@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "62d9d144fe6a73c14c7fe9eb9769ea3f",
+    "content-hash": "3b78ec1258686ff7d33cf2a3be041a6e",
     "packages": [
         {
             "name": "cakephp/cakephp",
@@ -671,23 +671,23 @@
         },
         {
             "name": "luecano/numero-a-letras",
-            "version": "v3.0.0",
+            "version": "v4.0.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/lecano/php-numero-a-letras.git",
-                "reference": "bab51e3e81545e38d6a11efccb3e6d568765ba7c"
+                "reference": "bc966735c788f5ea9423157a45f509b988c7163e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/lecano/php-numero-a-letras/zipball/bab51e3e81545e38d6a11efccb3e6d568765ba7c",
-                "reference": "bab51e3e81545e38d6a11efccb3e6d568765ba7c",
+                "url": "https://api.github.com/repos/lecano/php-numero-a-letras/zipball/bc966735c788f5ea9423157a45f509b988c7163e",
+                "reference": "bc966735c788f5ea9423157a45f509b988c7163e",
                 "shasum": ""
             },
             "require": {
-                "php": "^7.2|^8.0"
+                "php": "^8.2"
             },
             "require-dev": {
-                "phpunit/phpunit": "^8.5|^9.0"
+                "phpunit/phpunit": "^11.0"
             },
             "type": "library",
             "autoload": {
@@ -716,9 +716,15 @@
             ],
             "support": {
                 "issues": "https://github.com/lecano/php-numero-a-letras/issues",
-                "source": "https://github.com/lecano/php-numero-a-letras/tree/v3.0.0"
+                "source": "https://github.com/lecano/php-numero-a-letras/tree/v4.0.0"
             },
-            "time": "2021-03-05T15:13:07+00:00"
+            "funding": [
+                {
+                    "url": "https://github.com/lecano",
+                    "type": "github"
+                }
+            ],
+            "time": "2024-10-05T01:11:08+00:00"
         },
         {
             "name": "mobiledetect/mobiledetectlib",
@@ -6105,5 +6111,5 @@
         "php": ">=7.4"
     },
     "platform-dev": [],
-    "plugin-api-version": "2.3.0"
+    "plugin-api-version": "2.6.0"
 }
